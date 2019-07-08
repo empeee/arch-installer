@@ -1,0 +1,4 @@
+DRIVE='/dev/sda'
+HOSTNAME='thishostname'
+USERNAME='thisusername'
+TIMEZONE='America/New_York'

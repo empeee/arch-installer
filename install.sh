@@ -1,9 +1,17 @@
 #!/bin/bash
-
-DRIVE='/dev/vda'
-HOSTNAME='thishostname'
-USER_NAME='thisusername'
-TIMEZONE='America/New_York'
+if [ -f config.sh ]
+then
+    source config.sh
+else
+    DRIVE='/dev/sda'
+    HOSTNAME='thishostname'
+    USERNAME='thisusername'
+    TIMEZONE='America/New_York'
+fi
+echo $DRIVE
+echo $HOSTNAME
+echo $USERNAME
+echo $TIMEZONE
 
 setup() {
     echo "Setting up time..."
@@ -81,13 +89,24 @@ configure() {
     pacman -S --noconfirm networkmanager
     systemctl enable NetworkManager
 
+    echo "Creating user ${USERNAME}..."
+    useradd -m -g users -G wheel $USERNAME
+    passwd $USERNAME
+
+    echo "Install and setup sudo..."
+    pacman -S --noconfirm sudo
+    sed -e 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers > /etc/sudoers.tmp
+    mv /etc/sudoers.tmp /etc/sudoers
+
+    echo "Install useful packages..."
+    pacman -S --noconfirm vim tmux git arch-audit net-tools ranger
     echo "Cleaning up..."
     rm ./install.sh
 }
 
-if [ "$1" == "chroot" ]
-then
-    configure
-else
-    setup
-fi
+#if [ "$1" == "chroot" ]
+#then
+#    configure
+#else
+#    setup
+#fi
