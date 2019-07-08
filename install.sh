@@ -1,4 +1,5 @@
 #!/bin/bash
+
 if [ -f config.sh ]
 then
     source config.sh
@@ -8,10 +9,6 @@ else
     USERNAME='thisusername'
     TIMEZONE='America/New_York'
 fi
-echo $DRIVE
-echo $HOSTNAME
-echo $USERNAME
-echo $TIMEZONE
 
 setup() {
     echo "Setting up time..."
@@ -104,9 +101,9 @@ configure() {
     rm ./install.sh
 }
 
-#if [ "$1" == "chroot" ]
-#then
-#    configure
-#else
-#    setup
-#fi
+if [ "$1" == "chroot" ]
+then
+    configure
+else
+    setup
+fi
