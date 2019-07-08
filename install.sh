@@ -42,6 +42,12 @@ setup() {
 
     echo "Chrooting into installed system to continue setup..."
     cp $0 /mnt/install.sh
+    if [ -f config.sh ]
+    then
+        cp config.sh /mnt/config.sh
+    fi
+
+
     arch-chroot /mnt ./install.sh chroot
 
     if [ -f /mnt/install.sh ]
@@ -99,6 +105,10 @@ configure() {
     pacman -S --noconfirm vim tmux git arch-audit net-tools ranger
     echo "Cleaning up..."
     rm ./install.sh
+    if [ -f /config.sh ]
+    then
+        rm ./config.sh
+    fi
 }
 
 if [ "$1" == "chroot" ]
