@@ -100,8 +100,8 @@ configure() {
     echo "Creating user ${USERNAME}..."
     useradd -m -g users -G wheel $USERNAME
     
-    echo "Setting up yay..."
-    su $USERNAME "cd; git clone https://aur.archlinux.org/yay.git; cd yay; makepkg -si --noconfirm"
+    #echo "Setting up yay..."
+    #su $USERNAME "cd; git clone https://aur.archlinux.org/yay.git; cd yay; makepkg -si --noconfirm"
 
     echo "Setting up dotfiles..."
     su $USERNAME "cd; git clone https://github.com/empeee/dotfiles; cd dotfiles; ./makesymlinks.sh; ./vim_setup.sh"
