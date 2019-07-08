@@ -1,4 +1,4 @@
-DRIVE='/dev/sda'
+DRIVE='/dev/vda'
 HOSTNAME='thishostname'
 USERNAME='thisusername'
 TIMEZONE='America/New_York'
