@@ -104,7 +104,7 @@ configure() {
     #su $USERNAME "cd; git clone https://aur.archlinux.org/yay.git; cd yay; makepkg -si --noconfirm"
 
     echo "Setting up dotfiles..."
-    su $USERNAME -c "cd; git clone https://github.com/empeee/dotfiles; cd dotfiles; ./makesymlinks.sh; ./vim_setup.sh"
+    su $USERNAME -c "cd; git clone https://github.com/empeee/dotfiles; cd dotfiles; ./makesymlinks.sh; ./vim_setup.sh; vim -c 'PluginInstall' -c 'qa!'"
 
     echo "Set passwords"
     echo "Root"
