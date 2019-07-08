@@ -3,3 +3,5 @@ This is my arch linux installer script. There are many like it, but this one is 
 
 ## Instructions
 Copy `config.sh.example` to `config.sh` and edit the values otherwise you will get useless defaults.
+
+Run `./install.sh`
