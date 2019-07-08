@@ -79,10 +79,7 @@ configure() {
     echo "127.0.0.1 localhost" > /etc/hosts
     echo "::1 localhost" >> /etc/hosts
     echo "127.0.1.1 ${HOSTNAME}.local ${HOSTNAME}" >> /etc/hosts
-
-    echo "Setting root password..."
-    passwd
-
+    
     echo "Installing GRUB with UEFI..."
     pacman -S --noconfirm grub efibootmgr
     grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
@@ -92,10 +89,6 @@ configure() {
     pacman -S --noconfirm networkmanager
     systemctl enable NetworkManager
 
-    echo "Creating user ${USERNAME}..."
-    useradd -m -g users -G wheel $USERNAME
-    passwd $USERNAME
-
     echo "Install and setup sudo..."
     pacman -S --noconfirm sudo
     sed -e 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers > /etc/sudoers.tmp
@@ -103,6 +96,23 @@ configure() {
 
     echo "Install useful packages..."
     pacman -S --noconfirm vim tmux git arch-audit net-tools ranger
+    
+    echo "Creating user ${USERNAME}..."
+    useradd -m -g users -G wheel $USERNAME
+    
+    echo "Setting up yay..."
+    su $USERNAME "cd; git clone https://aur.archlinux.org/yay.git; cd yay; makepkg -si --noconfirm"
+
+    echo "Setting up dotfiles..."
+    su $USERNAME "cd; git clone https://github.com/empeee/dotfiles; cd dotfiles; ./makesymlinks.sh; ./vim_setup.sh"
+
+    echo "Set passwords"
+    echo "Root"
+    passwd
+
+    echo $USERNAME
+    passwd $USERNAME
+   
     echo "Cleaning up..."
     rm ./install.sh
     if [ -f /config.sh ]
