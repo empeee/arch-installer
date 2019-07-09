@@ -2,7 +2,7 @@
 This is my arch linux installer script. There are many like it, but this one is mine. My arch linux installer script is my best friend. It is my life. I must master it as I must master my life. My arch linux installer script, without me, is useless. Without my arch linux installer script, I am useless.
 
 ## Instructions
-This is currently designed to work on my unraid server in a VM. I will hopefully expand it to support more systems as I have the need.
+This is currently designed to work on my unraid server in a VM. I will expand it to support more systems as I have the need.
 
 Copy `config.sh.example` to `config.sh` and edit the values otherwise you will get useless defaults.
 
