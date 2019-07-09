@@ -79,7 +79,7 @@ configure() {
     echo "127.0.0.1 localhost" > /etc/hosts
     echo "::1 localhost" >> /etc/hosts
     echo "127.0.1.1 ${HOSTNAME}.local ${HOSTNAME}" >> /etc/hosts
-    
+
     echo "Installing GRUB with UEFI..."
     pacman -S --noconfirm grub efibootmgr
     grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
@@ -95,11 +95,11 @@ configure() {
     mv /etc/sudoers.tmp /etc/sudoers
 
     echo "Install useful packages..."
-    pacman -S --noconfirm vim tmux git arch-audit net-tools ranger
-    
+    pacman -S --noconfirm vim tmux git ranger htop iftop
+
     echo "Creating user ${USERNAME}..."
     useradd -m -g users -G wheel $USERNAME
-    
+
     #echo "Setting up yay..."
     #su $USERNAME "cd; git clone https://aur.archlinux.org/yay.git; cd yay; makepkg -si --noconfirm"
 
@@ -112,7 +112,7 @@ configure() {
 
     echo $USERNAME
     passwd $USERNAME
-   
+
     echo "Cleaning up..."
     rm ./install.sh
     if [ -f /config.sh ]
