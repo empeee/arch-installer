@@ -11,7 +11,7 @@ then
     cd st
     git pull
 else
-    git clone https://git.suckless.org/st
+    git clone https://github.com/empeee/st
     cd st
 fi
 make
