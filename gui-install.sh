@@ -4,7 +4,7 @@ sudo pacman -S --noconfirm xorg-server xorg-apps xorg-xinit
 
 mkdir -p ~/src
 
-echo "Installing st source..."
+echo "Installing st from source..."
 cd ~/src
 if [ -d st ]
 then
