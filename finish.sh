@@ -1,5 +1,5 @@
 #!/bin/bash
 
-./yay_install.sh
-./gui_install.sh
-./extras_install.sh
+./yay-install.sh
+./gui-install.sh
+./extras-install.sh
