@@ -1,6 +1,7 @@
 #!/bin/bash
 
 sudo pacman -S --noconfirm xorg-server xorg-apps xorg-xinit
+sudo pacman -S --noconfirm feh xcompmgr
 
 mkdir -p ~/src
 
