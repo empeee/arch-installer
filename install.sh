@@ -35,7 +35,7 @@ setup() {
     mount "${DRIVE}3" /mnt/home
 
     echo "Installing base packages..."
-    pacstrap /mnt base base-devel
+    pacstrap /mnt base linux linus-firmware base-devel
 
     echo "Generating fstab..."
     genfstab -U /mnt >> /mnt/etc/fstab
