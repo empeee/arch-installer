@@ -10,6 +10,8 @@ Run `./install.sh`
 
 This installs
  - `base`
+ - `linux`
+ - `linux-firmware`
  - `base-devel`
  - `grub`
  - `efibootmgr`
